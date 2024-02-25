@@ -8,7 +8,19 @@ function buyTicket() {
     const phone = document.getElementById('phone').value;
     const quantity = document.getElementById('quantity').value;
 //checks if values are there and corrext
-    if (validateEmail(email) && validatePhone(phone) && validateFirstName(firstName) && validateLastName(lastName) && film && quantity) {
+    if (!validateEmail(email)) {
+        alert('Vennligst skriv inn en gyldig e-postadresse.');
+    } else if (!validatePhone(phone)) {
+        alert('Vennligst skriv inn et gyldig telefonnummer.');
+    } else if (!validateName(firstName)) {
+        alert('Vennligst skriv inn et gyldig fornavn.');
+    } else if (!validateName(lastName)) {
+        alert('Vennligst skriv inn et gyldig etternavn.');
+    } else if (!film) {
+        alert('Vennligst velg en film.');
+    } else if (!quantity) {
+        alert('Vennligst skriv inn et antall.');
+    } else {
         const ticket = {
             firstName: firstName,
             lastName: lastName,
@@ -21,20 +33,13 @@ function buyTicket() {
         tickets.push(ticket);
         displayTickets();
         clearForm();
-    } else {
-        alert('Vennligst fyll ut alle feltene med riktige verdier.');
     }
-}
-//regex for first name
-function validateFirstName(firstName) {
-    const re = /^[a-zA-ZæøåÆØÅ\- ]+$/;
-    return re.test(firstName);
-}
-//regex for last name
 
-function validateLastName(lastName) {
+}
+//regex for first names
+function validateName(name) {
     const re = /^[a-zA-ZæøåÆØÅ\- ]+$/;
-    return re.test(lastName);
+    return re.test(name);
 }
 //regex for email
 function validateEmail(email) {
