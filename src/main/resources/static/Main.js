@@ -27,12 +27,12 @@ function buyTicket() {
 }
 
 function validateEmail(email) {
-    const re = /\S+@\S+\.\S+/;
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
 }
 
 function validatePhone(phone) {
-    const re = /^\d{8}$/;
+    const re = /^(0047|\+47|47)?\d{8}$/;
     return re.test(phone);
 }
 
