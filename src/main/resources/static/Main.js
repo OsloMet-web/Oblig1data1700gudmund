@@ -8,7 +8,7 @@ function buyTicket() {
     const phone = document.getElementById('phone').value;
     const quantity = document.getElementById('quantity').value;
 
-    if (validateEmail(email) && validatePhone(phone) && firstName && lastName && film && quantity) {
+    if (validateEmail(email) && validatePhone(phone) && validateFirstName(firstName) && validateLastName(lastName) && film && quantity) {
         const ticket = {
             firstName: firstName,
             lastName: lastName,
@@ -25,7 +25,14 @@ function buyTicket() {
         alert('Vennligst fyll ut alle feltene med riktige verdier.');
     }
 }
-
+function validateFirstName(firstName) {
+    const re = /^[a-zA-ZæøåÆØÅ\- ]+$/;
+    return re.test(firstName);
+}
+function validateLastName(lastName) {
+    const re = /^[a-zA-ZæøåÆØÅ\- ]+$/;
+    return re.test(lastName);
+}
 function validateEmail(email) {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
